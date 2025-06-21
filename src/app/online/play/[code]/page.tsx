@@ -160,7 +160,7 @@ const ChessBoard = () => {
         !isWhiteTurn)
     ) {
       const moves = chess.moves({
-        square: `${files[colIndex]}${ranks[rowIndex]}`,
+        square: `${files[colIndex]}${ranks[rowIndex]}` as any,
         verbose: true,
         piece: piece as any,
       });
