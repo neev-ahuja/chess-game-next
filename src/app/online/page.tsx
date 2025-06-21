@@ -29,7 +29,7 @@ const OnlinePlay = () => {
 
     const startgame = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await axios.get('http://localhost:3000/api');
+        const response = await axios.get('https://chess-game-next-ashen.vercel.app/api');
         redirect(`/online/play/${response.data.code}`);
     }
 
