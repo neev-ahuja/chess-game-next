@@ -72,7 +72,7 @@ const JoinPage = () => {
 
             <button
                 type="submit"
-                className="grou block m-auto bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-400 hover:to-yellow-300 text-black px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all transform hover:scale-105 hover:shadow-yellow-500/25 flex items-center space-x-2"
+                className="grou m-auto bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-400 hover:to-yellow-300 text-black px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all transform hover:scale-105 hover:shadow-yellow-500/25 flex items-center space-x-2"
                 onClick={() => redirect(`/online/join`)}
             >
                 <CirclePlus className="h-6 w-6 group-hover:animate-pulse" />
