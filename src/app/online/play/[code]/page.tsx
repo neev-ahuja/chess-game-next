@@ -308,51 +308,54 @@ const ChessBoard = () => {
             </div>
           </div>
 
-          <div className="flex">
-            <div className="flex flex-col mr-2">
-              {ranks.map(rank => (
-                <div
-                  key={rank}
-                  className="w-6 h-16 flex items-center justify-center text-yellow-400 font-bold text-lg"
-                >
-                  {rank}
-                </div>
-              ))}
-            </div>
+          
+<div className="flex justify-center items-center w-full">
+  <div className="flex flex-col mr-2">
+    {ranks.map(rank => (
+      <div
+        key={rank}
+        className="w-6 h-[12vw] max-h-16 flex items-center justify-center text-yellow-400 font-bold text-lg"
+      >
+        {rank}
+      </div>
+    ))}
+  </div>
 
-            <div className="border-4 border-yellow-500/30 rounded-lg overflow-hidden shadow-2xl">
-              {board &&
-                board.map((row, rowIndex) => (
-                  <div key={`row-${rowIndex}`} className="flex">
-                    {row.map((piece, colIndex) => {
-                      const isLightSquare = (rowIndex + colIndex) % 2 === 0;
-                      const isSelected =
-                        selectedCell &&
-                        selectedCell.rowIndex === rowIndex &&
-                        selectedCell.colIndex === colIndex;
+  <div className="border-4 border-yellow-500/30 rounded-lg overflow-hidden shadow-2xl w-[96vw] max-w-[512px] aspect-square">
+    {board &&
+      board.map((row, rowIndex) => (
+        <div key={`row-${rowIndex}`} className="flex">
+          {row.map((piece, colIndex) => {
+            const isLightSquare = (rowIndex + colIndex) % 2 === 0;
+            const isSelected =
+              selectedCell &&
+              selectedCell.rowIndex === rowIndex &&
+              selectedCell.colIndex === colIndex;
 
-                      return (
-                        <div
-                          key={`${rowIndex}-${colIndex}`}
-                          className={`w-16 h-16 flex items-center justify-center cursor-pointer transition-all duration-200 relative
-                          ${
-                            isLightSquare
-                              ? 'bg-gradient-to-br from-yellow-100 to-yellow-50 hover:from-yellow-200 hover:to-yellow-100'
-                              : 'bg-gradient-to-br from-yellow-800 to-yellow-700 hover:from-yellow-700 hover:to-yellow-600'
-                          }
-                          ${isSelected ? 'ring-4 ring-blue-400 ring-opacity-60' : ''}
-                          hover:shadow-lg transform hover:scale-105
-                        `}
-                          onClick={loadingMove ? ()=> console.log('Wait for black to move') : () => handleCellClick(rowIndex, colIndex, piece)}
-                        >
-                          {getPieceComponent(piece, rowIndex, colIndex)}
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
-            </div>
-          </div>
+            return (
+              <div
+                key={`${rowIndex}-${colIndex}`}
+                className={`
+                  flex-1 aspect-square flex items-center justify-center cursor-pointer transition-all duration-200 relative
+                  ${
+                    isLightSquare
+                      ? 'bg-gradient-to-br from-yellow-100 to-yellow-50 hover:from-yellow-200 hover:to-yellow-100'
+                      : 'bg-gradient-to-br from-yellow-800 to-yellow-700 hover:from-yellow-700 hover:to-yellow-600'
+                  }
+                  ${isSelected ? 'ring-4 ring-blue-400 ring-opacity-60' : ''}
+                  hover:shadow-lg transform hover:scale-105
+                `}
+                style={{ minWidth: 0 }}
+                onClick={() => handleCellClick(rowIndex, colIndex, piece)}
+              >
+                {getPieceComponent(piece, rowIndex, colIndex)}
+              </div>
+            );
+          })}
+        </div>
+      ))}
+  </div>
+</div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
